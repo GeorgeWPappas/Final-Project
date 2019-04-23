@@ -91,22 +91,22 @@ class NullDinerMenuFrame extends JFrame implements ActionListener {
         contentPane.add(contactGridPanel, BorderLayout.CENTER);
         contactGridPanel.setLayout(new GridLayout(4,8));        
 
-        JButton reverseView = new JButton("Reverse View");
-        buttonPanel.add(reverseView);
-        reverseView.addActionListener(this);
+        JButton checkoutButton = new JButton("Check Out");
+        buttonPanel.add(checkoutButton);
+        checkoutButton.addActionListener(this);
 
-        NullDinerMenuModel tbM = new NullDinerMenuModel();
-        tbM.LoadIndex();
-        tbM.LoadContactsThreaded();
+        NullDinerMenuModel ndmM = new NullDinerMenuModel();
+        ndmM.LoadIndex();
+        ndmM.LoadContactsThreaded();
 
-        System.out.println("Printing Model:");
-        System.out.println(tbM);
-        tbM.ValidateContacts();
+        System.out.println("Printing Menu Item:");
+        System.out.println(ndmM);
+        ndmM.ValidateContacts();
 
         tileList = new ArrayList<ContactTile>();
         if ((test%2) == 0) {
             for (int i=1; i<33; i++) {
-                NullDinerMenuContact contactInSeat = tbM.findContactInSeat(i);
+                NullDinerMenuContact contactInSeat = ndmM.findContactInSeat(i);
                 if (contactInSeat != null) {
                     System.out.println(contactInSeat);
                 }
@@ -122,7 +122,7 @@ class NullDinerMenuFrame extends JFrame implements ActionListener {
             }
         } else {
             for (int i=32; i>0; i--) {
-                NullDinerMenuContact contactInSeat = tbM.findContactInSeat(i);
+                NullDinerMenuContact contactInSeat = ndmM.findContactInSeat(i);
                 if (contactInSeat != null) {
                     System.out.println(contactInSeat);
                 }
@@ -141,12 +141,9 @@ class NullDinerMenuFrame extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
-        System.out.println("Reversing");
-        test++;
+        System.out.println("Checking out");
+        
 
-        for (ContactTile tile : tileList) {
-
-        }
         repaint();
     }
 }
