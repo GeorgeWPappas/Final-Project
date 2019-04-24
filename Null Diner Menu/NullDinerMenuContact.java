@@ -15,13 +15,13 @@ class NullDinerMenuContact extends HttpRequest implements Runnable {
     public String getFirstName() { return firstName; }
 
     private String lastName;
-    public String getLastName() {return lastName; }
+    public String getLastName() { return lastName; }
 
     private String preferredName;
-    public String getPreferredName() {return preferredName; }
+    public String getPreferredName() { return preferredName; }
 
     private String email;
-    public String getEmail() {return email; }
+    public String getEmail() { return email; }
     
     private int seatLocation; 
     public int getSeat() { return seatLocation; }
@@ -32,13 +32,13 @@ class NullDinerMenuContact extends HttpRequest implements Runnable {
     public String getItemName() { return itemName; }
 
     private String itemPrice;
-    public String getItemPrice() {return itemPrice; }
+    public String getItemPrice() { return itemPrice; }
 
     private String customizeOption;
-    public String getCustomizeOption() {return customizeOption; }
+    public String getCustomizeOption() { return customizeOption; }
 
     private String panelNumber;
-    public String getPanelNumber() {return panelNumber; }
+    public String getPanelNumber() { return panelNumber; }
 
     NullDinerMenuContact(String urlIn) {
         super(urlIn);
