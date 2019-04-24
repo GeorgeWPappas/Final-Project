@@ -9,11 +9,13 @@
  *****************************************************************************/
 
 class NullDinerMenuContact extends HttpRequest implements Runnable {
-    private String itemName;
-    public String getItemName() { return itemName; }
+    //------------------------------------------------------------------------
+    // GWP: Wont be needed but to keep origional code working for now.
+    private String firstName;
+    public String getFirstName() { return firstName; }
 
-    private String itemPrice;
-    public String getItemPrice() {return itemPrice; }
+    private String lastName;
+    public String getLastName() {return lastName; }
 
     private String preferredName;
     public String getPreferredName() {return preferredName; }
@@ -23,12 +25,26 @@ class NullDinerMenuContact extends HttpRequest implements Runnable {
     
     private int seatLocation; 
     public int getSeat() { return seatLocation; }
+    //--------------------------------------------------------------------------
+    //GWP: need to add fields below to the rest of the code for parsing and etc.
+
+    private String itemName;
+    public String getItemName() { return itemName; }
+
+    private String itemPrice;
+    public String getItemPrice() {return itemPrice; }
+
+    private String customizeOption;
+    public String getCustomizeOption() {return customizeOption; }
+
+    private String panelNumber;
+    public String getPanelNumber() {return panelNumber; }
 
     NullDinerMenuContact(String urlIn) {
         super(urlIn);
 
-        itemName = "";
-        itemPrice = "";
+        firstName = "";
+        lastName = "";
         preferredName = "";
         email = "";
         seatLocation = 0;
@@ -49,11 +65,11 @@ class NullDinerMenuContact extends HttpRequest implements Runnable {
             String[] subString = s.split("\"");
 
             if (subString.length > 3) {
-                if (subString[1].equals("itemName")) {
-                    itemName = subString[3];
+                if (subString[1].equals("firstName")) {
+                    firstName = subString[3];
                 }
-                if (subString[1].equals("itemPrice")) {
-                    itemPrice = subString[3];
+                if (subString[1].equals("lastName")) {
+                    lastName = subString[3];
                 }
                 if (subString[1].equals("preferredName")) {
                     preferredName = subString[3];
@@ -83,16 +99,16 @@ class NullDinerMenuContact extends HttpRequest implements Runnable {
             return; // Returning from the middle of a method is controversial.
         }
 
-        if (itemName.length() == 0) {
+        if (firstName.length() == 0) {
             System.out.println("Validating: " + requestURL);
-            System.out.println("    **Failed**: First Name (\"itemName\") required but not found\n\n");
-            System.out.println("Contact's last name : " + itemPrice);
+            System.out.println("    **Failed**: First Name (\"firstName\") required but not found\n\n");
+            System.out.println("Contact's last name : " + lastName);
             System.out.println("Contact's email: " + email + "\n");
             System.out.println(this);
-        } else if (itemPrice.length() == 0) {
+        } else if (lastName.length() == 0) {
             System.out.println("Validating: " + requestURL);
-            System.out.println("    **Failed**: Last Name (\"itemPrice\") required but not found\n\n");
-            System.out.println("Contact's first name : " + itemName);
+            System.out.println("    **Failed**: Last Name (\"lastName\") required but not found\n\n");
+            System.out.println("Contact's first name : " + firstName);
             System.out.println("Contact's email: " + email + "\n");
             System.out.println(this);          
         } else {
@@ -101,8 +117,8 @@ class NullDinerMenuContact extends HttpRequest implements Runnable {
     }
 
     public String toString() {
-        String returnString = "itemName: " + itemName + "\n";
-        returnString = returnString + "itemPrice: " + itemPrice + "\n";
+        String returnString = "firstName: " + firstName + "\n";
+        returnString = returnString + "lastName: " + lastName + "\n";
         returnString = returnString + "preferredName: " + preferredName + "\n";
         returnString = returnString + "email: " + email + "\n";
         returnString = returnString + "seatNumber: " + seatLocation + "\n";
