@@ -1,7 +1,6 @@
 class NullDinerOrder {
+    double subtotal;
     NullDinerOrder() {
-        String customerName;
-        float subtotal;
-        
+        subtotal = 0.00;
     }
 }
