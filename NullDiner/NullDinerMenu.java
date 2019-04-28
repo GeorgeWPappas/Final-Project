@@ -19,6 +19,7 @@ public class NullDinerMenu {
 
         // sandwiches
         sandwiches.add(new MenuItem("Sandwich", "Null Reuben", 6.99)); // #0
+        sandwiches.add(new MenuItem("Sandwich", "Tuna Sandwich", 6.99)); // #1
 
         // burgers
         burgers.add(new MenuItem("Burger", "Null Burger", 7.99)); // #0

@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class NullDiner {
     public static void main(String[] args) {
+
         NullDinerMenu menu = new NullDinerMenu();
         Scanner sc = new Scanner(System.in);
 
@@ -11,11 +12,45 @@ public class NullDiner {
 
         Order order = new Order(name);
 
-        while (order.getOrderSize() < 5) {
-            System.out.println("Enter item number: ");
-            int itemNum = sc.nextInt();
-            MenuItem orderedItem = menu.getAppetizer(itemNum);
-            order.addItem(orderedItem);
+        NullDinerFrame myFrame = new NullDinerFrame(order); 
+        myFrame.setVisible(true);
+
+        while (order.getCheckoutStatus() == false) {
+            try {
+                System.out.println("Choose a category:\n");
+                System.out.println("[0 APPETIZERS] [1 SANDWICHES] [2 BURGERS] [3 DRINKS] [4 DESSERTS]");
+                int chooseCat = sc.nextInt();
+                if (chooseCat==0) {
+                    System.out.println("Enter item number: ");
+                    int itemNum = sc.nextInt();
+                    MenuItem orderedItem = menu.getAppetizer(itemNum);
+                    order.addItem(orderedItem);
+                } else if (chooseCat==1) {
+                    System.out.println("Enter item number: ");
+                    int itemNum = sc.nextInt();
+                    MenuItem orderedItem = menu.getSandwich(itemNum);
+                    order.addItem(orderedItem);
+                } else if (chooseCat==2) {
+                    System.out.println("Enter item number: ");
+                    int itemNum = sc.nextInt();
+                    MenuItem orderedItem = menu.getBurger(itemNum);
+                    order.addItem(orderedItem);
+                } else if (chooseCat==3) {
+                    System.out.println("Enter item number: ");
+                    int itemNum = sc.nextInt();
+                    MenuItem orderedItem = menu.getDrink(itemNum);
+                    order.addItem(orderedItem);
+                } else if (chooseCat==4) {
+                    System.out.println("Enter item number: ");
+                    int itemNum = sc.nextInt();
+                    MenuItem orderedItem = menu.getAppetizer(itemNum);
+                    order.addItem(orderedItem);
+                } else {
+                    System.out.println("Invalid category number. Please enter 0,1,2,3,or 4");
+                }
+            } catch (Exception e) {
+                System.out.println("Item not found.");
+            }
         }
         
         System.out.println(order);
