@@ -12,6 +12,8 @@ public class NullDinerMenu {
     }
 
     public void fillMenu() {
+        //to-do: fill out the menu, use JSON data to fill the menu, add item descriptions
+
         //appetizers
         appetizers.add(new MenuItem("Appetizer", "Chicken Tenders", 2.99)); // #0
         appetizers.add(new MenuItem("Appetizer", "Onion Rings", 2.99)); //#1

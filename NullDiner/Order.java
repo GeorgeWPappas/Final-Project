@@ -6,10 +6,11 @@ public class Order {
     private ArrayList<MenuItem> orderList = new ArrayList<MenuItem>();
     private NumberFormat nf = NumberFormat.getCurrencyInstance();
     private double total;
-    private Boolean checkedOut = false;
+    private Boolean checkedOut;
 
     public Order(String nameIn) {
         this.customerName = nameIn;
+        this.checkedOut = false;
     }
 
     public MenuItem getItem(int itemNumber) {
@@ -29,6 +30,7 @@ public class Order {
     }
 
     public double calcTotal() {
+        total = 0;
         for (MenuItem item : orderList) {
             total += item.getPrice();
         }
@@ -45,12 +47,12 @@ public class Order {
     }
 
     public String toString() {
-        String printOrder = "Name: " + customerName + "\n";
+        String printOrder = "\nName: " + customerName + "\n";
         for (MenuItem item : orderList) {
-            printOrder += item;
+            printOrder = printOrder + orderList.indexOf(item) + " " + item;
         }
 
-        printOrder += "\nTotal: " + nf.format(calcTotal());
+        printOrder += "\nTotal: " + nf.format(total) + "\n";
 
         return printOrder;
     }

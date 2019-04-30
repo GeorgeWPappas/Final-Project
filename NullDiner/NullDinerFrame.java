@@ -29,9 +29,9 @@ public class NullDinerFrame extends JFrame {
         JPanel buttonPanel = new JPanel();
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
 
-        JPanel contactGridPanel = new JPanel();
-        contentPane.add(contactGridPanel, BorderLayout.CENTER);
-        contactGridPanel.setLayout(new GridLayout(4,8));
+        JPanel itemGridPanel = new JPanel();
+        contentPane.add(itemGridPanel, BorderLayout.CENTER);
+        itemGridPanel.setLayout(new GridLayout(4,8));
 
         JButton checkoutButton = new JButton("Checkout");
         buttonPanel.add(checkoutButton);
@@ -40,6 +40,11 @@ public class NullDinerFrame extends JFrame {
                 order.checkout();
             }
         });
+
+        // to-do: - Add tiles that add item to order
+        // - have a jpanel or jpanels that display and update the customer's order everytime
+        // a change is made
+        // - be able to remove items by clicking on the ordered item
     }
 
 }
