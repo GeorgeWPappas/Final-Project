@@ -61,6 +61,7 @@ class ContactTile extends JPanel {
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
         int stringX = (panelWidth/2)-60;
         int stringY = (panelHeight/2)+30;
+        
         /*if (itemInMenu != null) {
             String printedName = itemInMenu.getPreferredName();
             g.drawString(printedName,stringX,stringY);
