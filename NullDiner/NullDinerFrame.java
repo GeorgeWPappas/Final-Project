@@ -38,6 +38,7 @@ public class NullDinerFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {    
                 order.checkout();
                 System.out.println("CHECKING OUT... Press enter to continue.");
+                buttonPanel.remove(checkoutButton); 
             }
         });
 

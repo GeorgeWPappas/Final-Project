@@ -56,7 +56,7 @@ public class Order {
         return checkedOut;
     }
 
-    public String toString() {
+    public String toString() { // receipt info
         String printOrder = "\n**************************\nName: " + customerName + "\n**************************\n";
         for (MenuItem item : orderList) {
             printOrder += item;
