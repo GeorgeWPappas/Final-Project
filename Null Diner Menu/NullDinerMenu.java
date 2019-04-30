@@ -32,32 +32,27 @@ import java.awt.Font;
 import java.util.ArrayList;
 
 class ContactTile extends JPanel {
-    private NullDinerMenuContact contactInSeat = null;
+    private NullDinerMenuContact itemInMenu = null;
 
-    private Boolean isAnIsle = false;
-    public void setIsle() { isAnIsle = true; }
 
     ContactTile() {
         super();
     }
 
-    ContactTile(NullDinerMenuContact contactInSeatIn) {
+    ContactTile(NullDinerMenuContact itemInMenuIn) {
         super();
-        contactInSeat = contactInSeatIn;
+        itemInMenu = itemInMenuIn;
     }
 
     public void paintComponent(Graphics g) {
-        super.paintComponent(g); 
+        super.paintComponent(g);
 
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
-        if (isAnIsle) {
-            g.setColor(new Color(0,0,0)); // This RGB are for the isles.
-        } else {
-            g.setColor(new Color(23,95,210)); // This RGB are for the seats.
-        }
-        
+
+        g.setColor(new Color(23,95,210)); // This RGB are for the seats.
+
         g.fillRect (10, 10, panelWidth-20, panelHeight-20);
 
         g.setColor(new Color(146,255,59)); // This RGB are for the names.
@@ -66,10 +61,10 @@ class ContactTile extends JPanel {
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
         int stringX = (panelWidth/2)-60;
         int stringY = (panelHeight/2)+30;
-        if (contactInSeat != null) {
-            String printedName = contactInSeat.getPreferredName();
+        /*if (itemInMenu != null) {
+            String printedName = itemInMenu.getPreferredName();
             g.drawString(printedName,stringX,stringY);
-        }
+        }*/
     }
 }
 
@@ -101,37 +96,28 @@ class NullDinerMenuFrame extends JFrame implements ActionListener {
 
         System.out.println("Printing Menu Item:");
         System.out.println(ndmM);
-        ndmM.ValidateContacts();
 
         tileList = new ArrayList<ContactTile>();
         if ((test%2) == 0) {
             for (int i=1; i<33; i++) {
-                NullDinerMenuContact contactInSeat = ndmM.findContactInSeat(i);
-                if (contactInSeat != null) {
-                    System.out.println(contactInSeat);
+                NullDinerMenuContact itemInMenu = ndmM.findItemInMenu(i);
+                if (itemInMenu != null) {
+                    System.out.println(itemInMenu);
                 }
 
-                ContactTile tile = new ContactTile(contactInSeat);
-
-                if ((i==4)||(i==12)||(i==20)||(i==28)||(i==31)) {
-                    tile.setIsle();
-                }
+                ContactTile tile = new ContactTile(itemInMenu);
 
                 tileList.add(tile);
                 contactGridPanel.add(tile);
             }
         } else {
             for (int i=32; i>0; i--) {
-                NullDinerMenuContact contactInSeat = ndmM.findContactInSeat(i);
-                if (contactInSeat != null) {
-                    System.out.println(contactInSeat);
+                NullDinerMenuContact itemInMenu = ndmM.findItemInMenu(i);
+                if (itemInMenu != null) {
+                    System.out.println(itemInMenu);
                 }
 
-                ContactTile tile = new ContactTile(contactInSeat);
-
-                if ((i==4)||(i==12)||(i==20)||(i==28)||(i==31)) {
-                    tile.setIsle();
-                }
+                ContactTile tile = new ContactTile(itemInMenu);
 
                 tileList.add(tile);
                 contactGridPanel.add(tile);
@@ -146,6 +132,7 @@ class NullDinerMenuFrame extends JFrame implements ActionListener {
 
         repaint();
     }
+
 }
 
 public class NullDinerMenu {

@@ -41,28 +41,28 @@ class NullDinerMenuModel extends HttpRequest {
 
     public void LoadContacts() {
         long start = System.currentTimeMillis();
-        int contactsLoaded = 0;
-        for (NullDinerMenuContact hrC : contactList) {
-            hrC.Load();
-            contactsLoaded++;
+        int menuItemsLoaded = 0;
+        for (NullDinerMenuContact ndmC : contactList) {
+            ndmC.Load();
+            menuItemsLoaded++;
         }
 
-        System.out.println("Contacts Loaded: " + contactsLoaded);
-        System.out.println("LoadContacts Elapsed Time: " + (System.currentTimeMillis()-start) + " ms\n");
+        System.out.println("Menu Items Loaded: " + menuItemsLoaded);
+        System.out.println("Menu Items Loaded Elapsed Time: " + (System.currentTimeMillis()-start) + " ms\n");
     }
 
     public void LoadContactsThreaded() {
         long start = System.currentTimeMillis(); 
-        int contactsLoaded = 0;
+        int menuItemsLoaded = 0;
 
         ArrayList<Thread> threadList = new ArrayList<Thread>();
-        for (NullDinerMenuContact hrC : contactList) {
-            threadList.add(new Thread(hrC));
+        for (NullDinerMenuContact ndmC : contactList) {
+            threadList.add(new Thread(ndmC));
         }        
 
         for (Thread t: threadList) {
             t.start();
-            contactsLoaded++;
+            menuItemsLoaded++;
         }
 
         try {
@@ -73,17 +73,8 @@ class NullDinerMenuModel extends HttpRequest {
             System.out.println("Exception: " + e);
         }
 
-        System.out.println("Contacts Loaded: " + contactsLoaded);
+        System.out.println("Contacts Loaded: " + menuItemsLoaded);
         System.out.println("LoadContacts Elapsed Time = " + (System.currentTimeMillis()-start) + " ms\n");
-    }
-
-    public void ValidateContacts() {
-        long start = System.currentTimeMillis();
-        System.out.println("Validating Contacts:");
-        for (NullDinerMenuContact hrC : contactList) {
-            hrC.Validate();
-        }
-        System.out.println("ValidateContacts Elapsed Time = " + (System.currentTimeMillis()-start) + " ms\n");
     }
     
     public String toString() {
@@ -97,12 +88,9 @@ class NullDinerMenuModel extends HttpRequest {
         return returnString;
     }
 
-    public NullDinerMenuContact findContactInSeat(int seat) {
+    public NullDinerMenuContact findItemInMenu(int seat) {
         NullDinerMenuContact returnContact = null; 
         for (NullDinerMenuContact contact : contactList) {        
-            if (contact.getSeat() == seat) {
-                returnContact = contact;
-            }
         }
         return returnContact; 
     } 

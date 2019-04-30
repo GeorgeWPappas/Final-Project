@@ -11,43 +11,26 @@
 class NullDinerMenuContact extends HttpRequest implements Runnable {
     //------------------------------------------------------------------------
     // GWP: Wont be needed but to keep origional code working for now.
-    private String firstName;
-    public String getFirstName() { return firstName; }
-
-    private String lastName;
-    public String getLastName() { return lastName; }
-
-    private String preferredName;
-    public String getPreferredName() { return preferredName; }
-
-    private String email;
-    public String getEmail() { return email; }
-    
-    private int seatLocation; 
-    public int getSeat() { return seatLocation; }
-    //--------------------------------------------------------------------------
-    //GWP: need to add fields below to the rest of the code for parsing and etc.
-
     private String itemName;
-    public String getItemName() { return itemName; }
+    public String getitemName() { return itemName; }
 
     private String itemPrice;
-    public String getItemPrice() { return itemPrice; }
+    public String getitemPrice() { return itemPrice; }
 
-    private String customizeOption;
-    public String getCustomizeOption() { return customizeOption; }
+    private boolean customizeOption;
+    public boolean getcustomizeOption() { return customizeOption; }
+    
+    private int itemNumber; 
+    public int getItemNumber() { return itemNumber; }
 
-    private String panelNumber;
-    public String getPanelNumber() { return panelNumber; }
 
     NullDinerMenuContact(String urlIn) {
         super(urlIn);
 
-        firstName = "";
-        lastName = "";
-        preferredName = "";
-        email = "";
-        seatLocation = 0;
+        itemName = "";
+        itemPrice = "";
+        customizeOption = false;
+        itemNumber = 0;
     }
 
     public Boolean Load() {
@@ -65,23 +48,20 @@ class NullDinerMenuContact extends HttpRequest implements Runnable {
             String[] subString = s.split("\"");
 
             if (subString.length > 3) {
-                if (subString[1].equals("firstName")) {
-                    firstName = subString[3];
+                if (subString[1].equals("itemName")) {
+                    itemName = subString[3];
                 }
-                if (subString[1].equals("lastName")) {
-                    lastName = subString[3];
+                if (subString[1].equals("itemPrice")) {
+                    itemPrice = subString[3];
                 }
-                if (subString[1].equals("preferredName")) {
-                    preferredName = subString[3];
-                }
-                if (subString[1].equals("email")) {
-                    email = subString[3];
-                }
-                if (subString[1].equals("seatLocation")) {
+                /*if (subString[1].equals("customizeOption")) {
+                    customizeOption = subString[3];
+                }*/
+                if (subString[1].equals("itemNumber")) {
                     try {
-                        seatLocation = 0; 
+                        itemNumber = 0; 
                         if (!subString[3].equals("")) {
-                            seatLocation = Integer.parseInt(subString[3]);
+                            itemNumber = Integer.parseInt(subString[3]);
                         }
                     }
                     catch (Exception e) {
@@ -92,36 +72,11 @@ class NullDinerMenuContact extends HttpRequest implements Runnable {
         }    
     }
 
-    public void Validate() {
-        if (urlContent.size() < 1) {
-            System.out.println("Validating: " + requestURL);
-            System.out.println("    **Failed**: No content loaded\n");
-            return; // Returning from the middle of a method is controversial.
-        }
-
-        if (firstName.length() == 0) {
-            System.out.println("Validating: " + requestURL);
-            System.out.println("    **Failed**: First Name (\"firstName\") required but not found\n\n");
-            System.out.println("Contact's last name : " + lastName);
-            System.out.println("Contact's email: " + email + "\n");
-            System.out.println(this);
-        } else if (lastName.length() == 0) {
-            System.out.println("Validating: " + requestURL);
-            System.out.println("    **Failed**: Last Name (\"lastName\") required but not found\n\n");
-            System.out.println("Contact's first name : " + firstName);
-            System.out.println("Contact's email: " + email + "\n");
-            System.out.println(this);          
-        } else {
-            System.out.println("Validating: " + requestURL + "... Passed!");
-        }
-    }
-
     public String toString() {
-        String returnString = "firstName: " + firstName + "\n";
-        returnString = returnString + "lastName: " + lastName + "\n";
-        returnString = returnString + "preferredName: " + preferredName + "\n";
-        returnString = returnString + "email: " + email + "\n";
-        returnString = returnString + "seatNumber: " + seatLocation + "\n";
+        String returnString = "itemName: " + itemName + "\n";
+        returnString = returnString + "itemPrice: " + itemPrice + "\n";
+        returnString = returnString + "customizeOption: " + customizeOption + "\n";
+        returnString = returnString + "seatNumber: " + itemNumber + "\n";
         returnString = returnString + super.toString();
 
         return returnString;
