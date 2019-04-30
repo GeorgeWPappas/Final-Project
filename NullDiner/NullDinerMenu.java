@@ -22,12 +22,14 @@ public class NullDinerMenu {
         // sandwiches
         sandwiches.add(new MenuItem("Sandwich", "Null Reuben", 6.99)); // #0
         sandwiches.add(new MenuItem("Sandwich", "Tuna Sandwich", 6.99)); // #1
+        sandwiches.add(new MenuItem("Sandwich", "Ham Sandwich", 5.99));
 
         // burgers
         burgers.add(new MenuItem("Burger", "Null Burger", 7.99)); // #0
 
         // drinks
         drinks.add(new MenuItem("Drink", "Nullka Cola", 1.25)); // #0
+        drinks.add(new MenuItem("Drink", "Null Shake", 1.99)); // #1
 
         // desserts
         desserts.add(new MenuItem("Dessert", "Cherry Pie", 2.99)); // #0

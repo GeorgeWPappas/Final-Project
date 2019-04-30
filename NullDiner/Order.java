@@ -6,6 +6,8 @@ public class Order {
     private ArrayList<MenuItem> orderList = new ArrayList<MenuItem>();
     private NumberFormat nf = NumberFormat.getCurrencyInstance();
     private double total;
+    private double tax;
+    private double subtotal;
     private Boolean checkedOut;
 
     public Order(String nameIn) {
@@ -25,16 +27,24 @@ public class Order {
         orderList.remove(item);
     }
 
-    public int getOrderSize() {
+    /*public int getOrderSize() {
         return orderList.size();
-    }
+    } */
 
-    public double calcTotal() {
-        total = 0;
+    public void calcTotal() {
+        total = 0; // reset the total
         for (MenuItem item : orderList) {
             total += item.getPrice();
         }
-        return total;
+    }
+
+    public void calcTax() {
+        calcTotal();
+        tax = total * 0.0625;
+    }
+
+    public void calcSubtotal() {
+        subtotal = tax + total;
     }
 
     public Boolean getCheckoutStatus() {
@@ -47,12 +57,14 @@ public class Order {
     }
 
     public String toString() {
-        String printOrder = "\nName: " + customerName + "\n";
+        String printOrder = "\n**************************\nName: " + customerName + "\n**************************\n";
         for (MenuItem item : orderList) {
-            printOrder = printOrder + orderList.indexOf(item) + " " + item;
+            printOrder += item;
         }
 
-        printOrder += "\nTotal: " + nf.format(total) + "\n";
+        printOrder += "**************************\nTotal: " + nf.format(total);
+        printOrder += "\nTax: " + nf.format(tax);
+        printOrder += "\nSubtotal: " + nf.format(subtotal) + "\n**************************\n";
 
         return printOrder;
     }

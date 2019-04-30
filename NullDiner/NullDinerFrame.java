@@ -16,7 +16,6 @@ import java.awt.Color;
 import java.awt.Font;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class NullDinerFrame extends JFrame {
     NullDinerFrame(Order order) {
@@ -38,6 +37,7 @@ public class NullDinerFrame extends JFrame {
         checkoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {    
                 order.checkout();
+                System.out.println("CHECKING OUT... Press enter to continue.");
             }
         });
 

@@ -18,7 +18,7 @@ public class NullDiner {
         while (order.getCheckoutStatus() == false) {
             System.out.println(order);
             String keepGoing;
-            System.out.println("Press enter to add an item or click checkout and enter to checkout: ");
+            System.out.println("Press enter to add an item or click checkout: ");
             sc.nextLine();
             keepGoing = sc.nextLine();
 
@@ -35,30 +35,40 @@ public class NullDiner {
                     MenuItem orderedItem = menu.getAppetizer(itemNum);
                     order.addItem(orderedItem);
                     order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
                 } else if (chooseCat==1) {
                     System.out.println("Enter item number: ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getSandwich(itemNum);
                     order.addItem(orderedItem);
                     order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
                 } else if (chooseCat==2) {
                     System.out.println("Enter item number: ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getBurger(itemNum);
                     order.addItem(orderedItem);
                     order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
                 } else if (chooseCat==3) {
                     System.out.println("Enter item number: ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getDrink(itemNum);
                     order.addItem(orderedItem);
                     order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
                 } else if (chooseCat==4) {
                     System.out.println("Enter item number: ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getDessert(itemNum);
                     order.addItem(orderedItem);
                     order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
                 } else {
                     System.out.println("Invalid category number. Please enter 0,1,2,3,or 4");
                 }
@@ -67,6 +77,7 @@ public class NullDiner {
             }
         }
         
+        System.out.println("HERE'S YOUR RECEIPT... ENJOY!");
         System.out.println(order);
         sc.close();
     }

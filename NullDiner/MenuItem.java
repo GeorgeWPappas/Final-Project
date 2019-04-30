@@ -12,6 +12,10 @@ public class MenuItem {
         this.price = priceIn;
     }
 
+    public String getName() {
+        return itemName;
+    }
+
     public double getPrice() {
         return price;
     }
