@@ -12,7 +12,7 @@ public class NullDiner {
 
         Order order = new Order(name);
 
-        NullDinerFrame myFrame = new NullDinerFrame(order); 
+        NullDinerFrame myFrame = new NullDinerFrame(order);
         myFrame.setVisible(true);
 
         while (order.getCheckoutStatus() == false) {
