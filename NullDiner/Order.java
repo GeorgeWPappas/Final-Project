@@ -66,6 +66,9 @@ public class Order {
     }
 
     public String toString() { // receipt info
+
+        // Todo: GWP: improve formatting of saved file.
+
         String printOrder = "\n**************************\nName: " + customerName + "\n**************************\n";
         for (MenuItem item : orderList) {
             printOrder += item;
@@ -85,7 +88,7 @@ public class Order {
     }
 
     public void printReceiptToFile(String receipt) throws FileNotFoundException {
-        
+
         PrintWriter printWriter = new PrintWriter(saveFileName); // Create the write to file.
         printWriter.println(receipt); // Writes receipt to file.
         printWriter.close(); // Closes printWriter.
