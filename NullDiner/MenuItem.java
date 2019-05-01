@@ -4,12 +4,14 @@ public class MenuItem {
     private String itemType;
     private String itemName;
     private double price;
+    private String menuIndex;
     private NumberFormat nf = NumberFormat.getCurrencyInstance();
 
-    public MenuItem(String itemTypeIn, String itemNameIn, double priceIn) {
+    public MenuItem(String itemTypeIn, String menuIndexIn, String itemNameIn, double priceIn) {
         this.itemType = itemTypeIn;
         this.itemName = itemNameIn;
         this.price = priceIn;
+        this.menuIndex = menuIndexIn;
     }
 
     public String getName() {
@@ -21,7 +23,7 @@ public class MenuItem {
     }
 
     public String toString() {
-        return itemName + ",    " + nf.format(price) + "\n";
+        return menuIndex + " " + itemName + ",    " + nf.format(price) + "\n";
     }
 
     // to-do: have item descriptions

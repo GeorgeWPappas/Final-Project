@@ -16,24 +16,29 @@ public class NullDinerMenu {
         // Todo: GWP: Add more items in catigories so that each has a total of 3.
 
         // appetizers
-        appetizers.add(new MenuItem("Appetizer", "Chicken Tenders", 2.99)); // #0
-        appetizers.add(new MenuItem("Appetizer", "Onion Rings", 2.99)); //#1
-        appetizers.add(new MenuItem("Appetizer", "Mozzarella Sticks", 2.99)); //#2
+        appetizers.add(new MenuItem("Appetizer", "A0", "Chicken Tenders", 2.99)); // #0
+        appetizers.add(new MenuItem("Appetizer", "A1", "Onion Rings", 2.99)); //#1
+        appetizers.add(new MenuItem("Appetizer", "A2", "Mozzarella Sticks", 2.99)); //#2
 
         // sandwiches
-        sandwiches.add(new MenuItem("Sandwich", "Null Reuben", 6.99)); // #0
-        sandwiches.add(new MenuItem("Sandwich", "Tuna Sandwich", 6.99)); // #1
-        sandwiches.add(new MenuItem("Sandwich", "Ham Sandwich", 5.99)); // #2
+        sandwiches.add(new MenuItem("Sandwich", "S0", "Null Reuben", 6.99)); // #0
+        sandwiches.add(new MenuItem("Sandwich", "S1", "Tuna Sandwich", 6.99)); // #1
+        sandwiches.add(new MenuItem("Sandwich", "S2", "Ham Sandwich", 5.99)); // #2
 
         // burgers
-        burgers.add(new MenuItem("Burger", "Null Burger", 7.99)); // #0
-
+        burgers.add(new MenuItem("Burger", "B0", "Null Burger", 7.99)); // #0
+        burgers.add(new MenuItem("Burger", "B1", "Double Cheeseburger", 8.99)); //#1
+        burgers.add(new MenuItem("Burger", "B2", "Float Cheeseburger", 8.99)); //#2
+ 
         // drinks
-        drinks.add(new MenuItem("Drink", "Nullka Cola", 1.25)); // #0
-        drinks.add(new MenuItem("Drink", "Null Shake", 1.99)); // #1
+        drinks.add(new MenuItem("Drink", "Dr0", "Nullka Cola", 1.25)); // #0
+        drinks.add(new MenuItem("Drink", "Dr1", "Null Shake", 1.99)); // #1
+        drinks.add(new MenuItem("Drink", "Dr2", "Coffee", 1.99)); // #2
 
         // desserts
-        desserts.add(new MenuItem("Dessert", "Cherry Pie", 2.99)); // #0
+        desserts.add(new MenuItem("Dessert", "Ds0", "Cherry Pie", 2.99)); // #0
+        desserts.add(new MenuItem("Dessert", "Ds1", "Strawberry Shortcake", 2.99)); // #1
+        desserts.add(new MenuItem("Dessert", "Ds2", "Fudge Sundae", 3.99)); // #2
     }
 
     public MenuItem getAppetizer(int itemNum) { // get an appetizer

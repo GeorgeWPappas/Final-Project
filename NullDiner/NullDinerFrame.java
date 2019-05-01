@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 class ItemTile extends JPanel implements MouseListener {
-    //private NullDinerMenuContact itemInMenu = null;
+    private MenuItem item = null;
 
     private Boolean isAppetizer = false;
     public void setAppetizer() { isAppetizer = true; }
@@ -41,6 +41,11 @@ class ItemTile extends JPanel implements MouseListener {
 
     ItemTile() {
         super();
+    }
+
+    ItemTile(MenuItem itemIn) {
+        super();
+        item = itemIn;
     }
 
     /*ItemTile(NullDinerMenuContact itemInMenuIn) {
@@ -78,10 +83,10 @@ class ItemTile extends JPanel implements MouseListener {
         int stringX = (panelWidth/2)-60;
         int stringY = (panelHeight/2)+30;
         
-        /*if (itemInMenu != null) {
-            String printedName = itemInMenu.getPreferredName();
+        if (item != null) {
+            String printedName = item.toString();
             g.drawString(printedName,stringX,stringY);
-        }*/
+        }
     }
 
     public void mousePressed(MouseEvent me) {
@@ -132,46 +137,47 @@ public class NullDinerFrame extends JFrame {
             }
         });
 
-        // to-do: - Add tiles that add item to order
-        // - have a jpanel or jpanels that display and update the customer's order everytime
-        // a change is made
-        // - be able to remove items by clicking on the ordered item
-
+        // fill out the frame with menu items
         appTileList = new ArrayList<ItemTile>();
-        for (MenuItem app : menu.getAppArray()) {
-            ItemTile appTile = new ItemTile();
+        for (int i=0; i<menu.getAppArray().size(); i++) {
+            MenuItem ap = menu.getAppetizer(i);
+            ItemTile appTile = new ItemTile(ap);
             appTile.setAppetizer();
             appTileList.add(appTile);
             itemGridPanel.add(appTile);
         }
 
         sandTileList = new ArrayList<ItemTile>();
-        for (MenuItem s : menu.getSandArray()) {
-            ItemTile sandTile = new ItemTile();
+        for (int i=0; i<menu.getSandArray().size(); i++) {
+            MenuItem s = menu.getSandwich(i);
+            ItemTile sandTile = new ItemTile(s);
             sandTile.setSandwich();
             sandTileList.add(sandTile);
             itemGridPanel.add(sandTile);
         }
 
         burgTileList = new ArrayList<ItemTile>();
-        for (MenuItem b : menu.getBurgArray()) {
-            ItemTile burgTile = new ItemTile();
+        for (int i=0; i<menu.getBurgArray().size(); i++) {
+            MenuItem b = menu.getBurger(i);
+            ItemTile burgTile = new ItemTile(b);
             burgTile.setBurger();
             burgTileList.add(burgTile);
             itemGridPanel.add(burgTile);
         }
 
         drinkTileList = new ArrayList<ItemTile>();
-        for (MenuItem dr : menu.getDrinkArray()) {
-            ItemTile drinkTile = new ItemTile();
+        for (int i=0; i<menu.getDrinkArray().size(); i++) {
+            MenuItem dr = menu.getDrink(i);
+            ItemTile drinkTile = new ItemTile(dr);
             drinkTile.setDrink();
             drinkTileList.add(drinkTile);
             itemGridPanel.add(drinkTile);
         }
 
         dessTileList = new ArrayList<ItemTile>();
-        for (MenuItem des : menu.getDessArray()) {
-            ItemTile dessTile = new ItemTile();
+        for (int i=0; i<menu.getDessArray().size(); i++) {
+            MenuItem ds = menu.getDessert(i);
+            ItemTile dessTile = new ItemTile(ds);
             dessTile.setDessert();
             dessTileList.add(dessTile);
             itemGridPanel.add(dessTile);
