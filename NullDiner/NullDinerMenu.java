@@ -55,4 +55,24 @@ public class NullDinerMenu {
     public MenuItem getDessert(int itemNum) {
         return desserts.get(itemNum);
     }
+
+    public ArrayList<MenuItem> getAppArray() {
+        return appetizers;
+    }
+
+    public ArrayList<MenuItem> getSandArray() {
+        return sandwiches;
+    }
+
+    public ArrayList<MenuItem> getBurgArray() {
+        return burgers;
+    }
+
+    public ArrayList<MenuItem> getDrinkArray() {
+        return drinks;
+    }
+
+    public ArrayList<MenuItem> getDessArray() {
+        return desserts;
+    }
 }

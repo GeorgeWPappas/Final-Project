@@ -95,9 +95,20 @@ class ItemTile extends JPanel implements MouseListener {
 }
 
 public class NullDinerFrame extends JFrame {
-    private ArrayList<ItemTile> tileList;
+    // arraylists to hold tiles on the menu
+    private ArrayList<ItemTile> appTileList;
+    private ArrayList<ItemTile> sandTileList;
+    private ArrayList<ItemTile> burgTileList;
+    private ArrayList<ItemTile> drinkTileList;
+    private ArrayList<ItemTile> dessTileList;
 
-    NullDinerFrame(Order order) {
+    private Order order;
+    private NullDinerMenu menu;
+
+    NullDinerFrame(Order orderIn, NullDinerMenu menuIn) {
+        order = orderIn;    
+        menu = menuIn;
+
         setBounds(200,200,1200,800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -126,9 +137,49 @@ public class NullDinerFrame extends JFrame {
         // a change is made
         // - be able to remove items by clicking on the ordered item
 
-        tileList = new ArrayList<ItemTile>();
-        String itemInMenu = null;
- 
+        appTileList = new ArrayList<ItemTile>();
+        for (MenuItem app : menu.getAppArray()) {
+            ItemTile appTile = new ItemTile();
+            appTile.setAppetizer();
+            appTileList.add(appTile);
+            itemGridPanel.add(appTile);
+        }
+
+        sandTileList = new ArrayList<ItemTile>();
+        for (MenuItem s : menu.getSandArray()) {
+            ItemTile sandTile = new ItemTile();
+            sandTile.setSandwich();
+            sandTileList.add(sandTile);
+            itemGridPanel.add(sandTile);
+        }
+
+        burgTileList = new ArrayList<ItemTile>();
+        for (MenuItem b : menu.getBurgArray()) {
+            ItemTile burgTile = new ItemTile();
+            burgTile.setBurger();
+            burgTileList.add(burgTile);
+            itemGridPanel.add(burgTile);
+        }
+
+        drinkTileList = new ArrayList<ItemTile>();
+        for (MenuItem dr : menu.getDrinkArray()) {
+            ItemTile drinkTile = new ItemTile();
+            drinkTile.setDrink();
+            drinkTileList.add(drinkTile);
+            itemGridPanel.add(drinkTile);
+        }
+
+        dessTileList = new ArrayList<ItemTile>();
+        for (MenuItem des : menu.getDessArray()) {
+            ItemTile dessTile = new ItemTile();
+            dessTile.setDessert();
+            dessTileList.add(dessTile);
+            itemGridPanel.add(dessTile);
+        }
+
+        // String itemInMenu = null;
+
+        /*
         for (int i=0; i<15; i++) {
             //NullDinerMenuContact itemInMenu = ndmM.findItemInMenu(i);
             if (itemInMenu != null) {
@@ -155,6 +206,6 @@ public class NullDinerFrame extends JFrame {
 
             tileList.add(tile);
             itemGridPanel.add(tile);
-        }
+        } */
     }
 }
