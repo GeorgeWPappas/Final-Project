@@ -24,6 +24,20 @@ import java.util.ArrayList;
 class ItemTile extends JPanel implements MouseListener {
     //private NullDinerMenuContact itemInMenu = null;
 
+    private Boolean isAppetizer = false;
+    public void setAppetizer() { isAppetizer = true; }
+
+    private Boolean isSandwich = false;
+    public void setSandwich() { isSandwich = true; }
+
+    private Boolean isBurger = false;
+    public void setBurger() { isBurger = true; }
+
+    private Boolean isDrink = false;
+    public void setDrink() { isDrink = true; }
+
+    private Boolean isDessert = false;
+    public void setDessert() { isDessert = true; }
 
     ItemTile() {
         super();
@@ -32,6 +46,9 @@ class ItemTile extends JPanel implements MouseListener {
     /*ItemTile(NullDinerMenuContact itemInMenuIn) {
         super();
         itemInMenu = itemInMenuIn;
+        if(contactInSeat != null) {
+            addMouseListener(this);
+        }
     }*/
 
     public void paintComponent(Graphics g) {
@@ -40,8 +57,17 @@ class ItemTile extends JPanel implements MouseListener {
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
-
-        g.setColor(new Color(23,95,210)); // This RGB are for the seats.
+        if (isAppetizer) {
+            g.setColor(new Color(255,140,0)); // Sets Appetizer to Orange.
+        } else if (isSandwich) {
+            g.setColor(new Color(175,31,36)); // Sets Sandwich to Red.
+        } else if (isBurger) {
+            g.setColor(new Color(11,91,170)); // Stes Burger to Blue.
+        } else if (isDrink) {
+            g.setColor(new Color(255,255,0)); // Sets Drink to Yellow.
+        } else if (isDessert) {
+            g.setColor(new Color(0,204,0)); // Sets Dessert to Green.
+        }
 
         g.fillRect (10, 10, panelWidth-20, panelHeight-20);
 
@@ -83,7 +109,7 @@ public class NullDinerFrame extends JFrame {
 
         JPanel itemGridPanel = new JPanel();
         contentPane.add(itemGridPanel, BorderLayout.CENTER);
-        itemGridPanel.setLayout(new GridLayout(4,8));
+        itemGridPanel.setLayout(new GridLayout(5,3));
 
         JButton checkoutButton = new JButton("Checkout");
         buttonPanel.add(checkoutButton);
@@ -103,13 +129,29 @@ public class NullDinerFrame extends JFrame {
         tileList = new ArrayList<ItemTile>();
         String itemInMenu = null;
  
-        for (int i=1; i<33; i++) {
+        for (int i=0; i<15; i++) {
             //NullDinerMenuContact itemInMenu = ndmM.findItemInMenu(i);
             if (itemInMenu != null) {
                 System.out.println();
             }
 
             ItemTile tile = new ItemTile();
+
+            if ((i==0)||(i==1)||(i==2)) {
+                tile.setAppetizer();
+            }
+            if ((i==3)||(i==4)||(i==5)) {
+                tile.setSandwich();
+            }
+            if ((i==6)||(i==7)||(i==8)) {
+                tile.setBurger();
+            }
+            if ((i==9)||(i==10)||(i==11)) {
+                tile.setDrink();
+            }
+            if ((i==12)||(i==13)||(i==14)) {
+                tile.setDessert();
+            }
 
             tileList.add(tile);
             itemGridPanel.add(tile);
