@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 import java.text.NumberFormat;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;
+
+
 public class Order {
     private String customerName;
     private ArrayList<MenuItem> orderList = new ArrayList<MenuItem>();
@@ -9,6 +16,8 @@ public class Order {
     private double tax;
     private double subtotal;
     private Boolean checkedOut;
+    private String saveFileName = "CustomerReceipt.txt";
+
 
     public Order(String nameIn) {
         this.customerName = nameIn;
@@ -66,7 +75,21 @@ public class Order {
         printOrder += "\nTax: " + nf.format(tax);
         printOrder += "\nSubtotal: " + nf.format(subtotal) + "\n**************************\n";
 
+        try {
+            printReceiptToFile(printOrder);
+        } catch (FileNotFoundException e) {
+            System.out.print("Could not save receipt");
+        }
+
         return printOrder;
+    }
+
+    public void printReceiptToFile(String receipt) throws FileNotFoundException {
+        
+        PrintWriter printWriter = new PrintWriter(saveFileName); // Create the write to file.
+        printWriter.println(receipt); // Writes receipt to file.
+        printWriter.close(); // Closes printWriter.
+
     }
 
 }
