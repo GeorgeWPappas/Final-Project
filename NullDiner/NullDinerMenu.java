@@ -12,8 +12,6 @@ public class NullDinerMenu {
     }
 
     public void fillMenu() {
-        //to-do: fill out the menu, use JSON data to fill the menu, add item descriptions
-        // Todo: GWP: Add more items in catigories so that each has a total of 3.
 
         // appetizers
         appetizers.add(new MenuItem("Appetizer", "A0", "Chicken Tenders", 2.99)); // #0

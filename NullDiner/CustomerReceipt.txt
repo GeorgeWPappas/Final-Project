@@ -1,9 +1,9 @@
 
 **************************
-Name: wes
+Name: jeff
 **************************
-A2 Mozzarella Sticks,    $2.99
-Ds2 Fudge Sundae,    $3.99
+A0 - Chicken Tenders, $2.99
+Ds2 - Fudge Sundae, $3.99
 **************************
 Total: $6.98
 Tax: $0.44

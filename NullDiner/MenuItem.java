@@ -23,7 +23,7 @@ public class MenuItem {
     }
 
     public String toString() {
-        return menuIndex + " " + itemName + ",    " + nf.format(price) + "\n";
+        return menuIndex + " - " + itemName + ", " + nf.format(price) + "\n";
     }
 
     // to-do: have item descriptions

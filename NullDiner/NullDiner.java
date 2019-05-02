@@ -30,7 +30,7 @@ public class NullDiner {
                 int chooseCat = sc.nextInt();
 
                 if (chooseCat==0) {
-                    System.out.println("Enter item number: ");
+                    System.out.println("Enter item number (see menu): ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getAppetizer(itemNum);
                     order.addItem(orderedItem);
@@ -38,7 +38,7 @@ public class NullDiner {
                     order.calcTax();
                     order.calcSubtotal();
                 } else if (chooseCat==1) {
-                    System.out.println("Enter item number: ");
+                    System.out.println("Enter item number (see menu): ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getSandwich(itemNum);
                     order.addItem(orderedItem);
@@ -46,7 +46,7 @@ public class NullDiner {
                     order.calcTax();
                     order.calcSubtotal();
                 } else if (chooseCat==2) {
-                    System.out.println("Enter item number: ");
+                    System.out.println("Enter item number (see menu): ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getBurger(itemNum);
                     order.addItem(orderedItem);
@@ -54,7 +54,7 @@ public class NullDiner {
                     order.calcTax();
                     order.calcSubtotal();
                 } else if (chooseCat==3) {
-                    System.out.println("Enter item number: ");
+                    System.out.println("Enter item number (see menu): ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getDrink(itemNum);
                     order.addItem(orderedItem);
@@ -62,7 +62,7 @@ public class NullDiner {
                     order.calcTax();
                     order.calcSubtotal();
                 } else if (chooseCat==4) {
-                    System.out.println("Enter item number: ");
+                    System.out.println("Enter item number (see menu): ");
                     int itemNum = sc.nextInt();
                     MenuItem orderedItem = menu.getDessert(itemNum);
                     order.addItem(orderedItem);

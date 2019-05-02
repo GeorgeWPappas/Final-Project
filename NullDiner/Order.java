@@ -60,9 +60,12 @@ public class Order {
         return checkedOut;
     }
 
-    public Boolean checkout() {
+    public void checkout() {
         checkedOut = true;
-        return checkedOut;
+    }
+
+    public ArrayList<MenuItem> getOrderList() {
+        return orderList;
     }
 
     public String toString() { // receipt info
