@@ -1,10 +1,15 @@
 
 **************************
-Name: g
+Name: george
 **************************
+A0 - Chicken Tenders, $2.99
+A0 - Chicken Tenders, $2.99
+A0 - Chicken Tenders, $2.99
+A0 - Chicken Tenders, $2.99
+A0 - Chicken Tenders, $2.99
 **************************
-Total: $0.00
-Tax: $0.00
-Subtotal: $0.00
+Total: $14.95
+Tax: $0.93
+Subtotal: $15.88
 **************************
 

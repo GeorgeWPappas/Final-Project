@@ -82,7 +82,9 @@ public class Order {
         printOrder += "\nSubtotal: " + nf.format(subtotal) + "\n**************************\n";
 
         try {
-            printReceiptToFile(printOrder);
+            if (checkedOut) {
+                printReceiptToFile(printOrder);
+            }
         } catch (FileNotFoundException e) {
             System.out.print("Could not save receipt");
         }
