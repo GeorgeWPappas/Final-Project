@@ -46,15 +46,10 @@ class ItemTile extends JPanel implements MouseListener {
     ItemTile(MenuItem itemIn) {
         super();
         item = itemIn;
-    }
-
-    /*ItemTile(NullDinerMenuContact itemInMenuIn) {
-        super();
-        itemInMenu = itemInMenuIn;
-        if(contactInSeat != null) {
+        if (item != null) {
             addMouseListener(this);
         }
-    }*/
+    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -90,6 +85,7 @@ class ItemTile extends JPanel implements MouseListener {
     }
 
     public void mousePressed(MouseEvent me) {
+        System.out.println("test");
         //JOptionPane.showMessageDialog(new JFrame(), contactInSeat, contactInSeat.getPreferredName(), JOptionPane.PLAIN_MESSAGE);
     }
 
@@ -182,36 +178,5 @@ public class NullDinerFrame extends JFrame {
             dessTileList.add(dessTile);
             itemGridPanel.add(dessTile);
         }
-
-        // String itemInMenu = null;
-
-        /*
-        for (int i=0; i<15; i++) {
-            //NullDinerMenuContact itemInMenu = ndmM.findItemInMenu(i);
-            if (itemInMenu != null) {
-                System.out.println();
-            }
-
-            ItemTile tile = new ItemTile();
-
-            if ((i==0)||(i==1)||(i==2)) {
-                tile.setAppetizer();
-            }
-            if ((i==3)||(i==4)||(i==5)) {
-                tile.setSandwich();
-            }
-            if ((i==6)||(i==7)||(i==8)) {
-                tile.setBurger();
-            }
-            if ((i==9)||(i==10)||(i==11)) {
-                tile.setDrink();
-            }
-            if ((i==12)||(i==13)||(i==14)) {
-                tile.setDessert();
-            }
-
-            tileList.add(tile);
-            itemGridPanel.add(tile);
-        } */
     }
 }
