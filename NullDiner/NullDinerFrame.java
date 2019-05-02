@@ -76,7 +76,7 @@ class ItemTile extends JPanel implements MouseListener {
 
         g.fillRect (10, 10, panelWidth-20, panelHeight-20);
 
-        g.setColor(new Color(146,255,59)); // This RGB are for the names.
+        g.setColor(new Color(0,0,0)); // Sets Text to Black.
 
         final int fontSize=18;
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
