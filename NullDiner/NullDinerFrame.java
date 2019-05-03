@@ -133,7 +133,7 @@ public class NullDinerFrame extends JFrame {
             }
         });
 
-        // fill out the frame with menu items
+        // Fills out the frame with menu items
         appTileList = new ArrayList<ItemTile>();
         for (int i=0; i<menu.getAppArray().size(); i++) {
             MenuItem ap = menu.getAppetizer(i);

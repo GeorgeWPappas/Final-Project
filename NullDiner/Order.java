@@ -36,10 +36,6 @@ public class Order {
         orderList.remove(item);
     }
 
-    /*public int getOrderSize() {
-        return orderList.size();
-    } */
-
     public void calcTotal() {
         total = 0; // reset the total
         for (MenuItem item : orderList) {
@@ -69,8 +65,6 @@ public class Order {
     }
 
     public String toString() { // receipt info
-
-        // Todo: GWP: improve formatting of saved file.
 
         String printOrder = "\n**************************\nName: " + customerName + "\n**************************\n";
         for (MenuItem item : orderList) {

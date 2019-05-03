@@ -26,5 +26,5 @@ public class MenuItem {
         return menuIndex + " - " + itemName + ", " + nf.format(price) + "\n";
     }
 
-    // to-do: have item descriptions
+    // Todo: have item descriptions
 }
