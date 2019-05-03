@@ -2,20 +2,9 @@
 **************************
 Name: wes
 **************************
-A1 - Onion Rings, $2.99
-S1 - Tuna Sandwich, $6.99
-B0 - Null Burger, $7.99
-B1 - Double Cheeseburger, $8.99
-Dr1 - Null Shake, $1.99
-Ds1 - Strawberry Shortcake, $2.99
-Ds1 - Strawberry Shortcake, $2.99
-Ds1 - Strawberry Shortcake, $2.99
-Ds1 - Strawberry Shortcake, $2.99
-Ds1 - Strawberry Shortcake, $2.99
-Ds2 - Fudge Sundae, $3.99
 **************************
-Total: $47.89
-Tax: $2.99
-Subtotal: $50.88
+Total: $0.00
+Tax: $0.00
+Subtotal: $0.00
 **************************
 

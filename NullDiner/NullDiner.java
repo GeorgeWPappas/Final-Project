@@ -80,6 +80,9 @@ public class NullDiner {
         
         System.out.println("HERE'S YOUR RECEIPT... ENJOY!");
         System.out.println(order);
+
+        myFrame.setVisible(false);
+        myFrame.dispose();
         sc.close();
     }
 }
