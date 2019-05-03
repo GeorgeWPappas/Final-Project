@@ -2,9 +2,13 @@
 **************************
 Name: wes
 **************************
+Ds0 - Cherry Pie, $2.99
+Ds0 - Cherry Pie, $2.99
+Dr1 - Null Shake, $1.99
+Ds1 - Strawberry Shortcake, $2.99
 **************************
-Total: $0.00
-Tax: $0.00
-Subtotal: $0.00
+Total: $10.96
+Tax: $0.69
+Subtotal: $11.65
 **************************
 

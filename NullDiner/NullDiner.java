@@ -16,10 +16,10 @@ public class NullDiner {
         myFrame.setVisible(true);
 
         while (order.getCheckoutStatus() == false) {
-            System.out.println(order);
+            //System.out.println(order);
             String keepGoing;
             //System.out.println("Press enter to add an item or click checkout: ");
-            sc.nextLine();
+            //sc.nextLine();
             keepGoing = sc.nextLine();
 
             try {
