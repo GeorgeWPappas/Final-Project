@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 
 import java.util.ArrayList;
 
-class ItemTile extends JPanel implements MouseListener {
+class ItemTile extends JPanel {
     private MenuItem item = null;
 
     private Boolean isAppetizer = false;
@@ -46,9 +46,6 @@ class ItemTile extends JPanel implements MouseListener {
     ItemTile(MenuItem itemIn) {
         super();
         item = itemIn;
-        if (item != null) {
-            addMouseListener(this);
-        }
     }
 
     public void paintComponent(Graphics g) {
@@ -75,7 +72,7 @@ class ItemTile extends JPanel implements MouseListener {
 
         final int fontSize=18;
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
-        int stringX = (panelWidth/2)-60;
+        int stringX = (panelWidth/2)-80;
         int stringY = (panelHeight/2)+30;
         
         if (item != null) {
@@ -83,20 +80,10 @@ class ItemTile extends JPanel implements MouseListener {
             g.drawString(printedName,stringX,stringY);
         }
     }
-
-    public void mousePressed(MouseEvent me) {
-        System.out.println("test");
-        //JOptionPane.showMessageDialog(new JFrame(), contactInSeat, contactInSeat.getPreferredName(), JOptionPane.PLAIN_MESSAGE);
-    }
-
-    public void mouseReleased(MouseEvent me) {}
-    public void mouseClicked(MouseEvent me) {}
-    public void mouseExited(MouseEvent me) {}
-    public void mouseEntered(MouseEvent me) {}
 }
 
 public class NullDinerFrame extends JFrame {
-    // arraylists to hold tiles on the menu
+    // Arraylists to hold tiles on the menu.
     private ArrayList<ItemTile> appTileList;
     private ArrayList<ItemTile> sandTileList;
     private ArrayList<ItemTile> burgTileList;
@@ -130,14 +117,33 @@ public class NullDinerFrame extends JFrame {
                 order.checkout();
                 System.out.println("CHECKING OUT... Press enter to continue.");
                 buttonPanel.remove(checkoutButton);
+                setVisible(false);
+                dispose();
             }
         });
 
-        // Fills out the frame with menu items
+        // Fills out the frame with menu items.
         appTileList = new ArrayList<ItemTile>();
         for (int i=0; i<menu.getAppArray().size(); i++) {
             MenuItem ap = menu.getAppetizer(i);
             ItemTile appTile = new ItemTile(ap);
+
+            appTile.addMouseListener(new MouseListener() {
+                public void mousePressed(MouseEvent me) {
+                    order.getOrderList().add(ap);
+                    System.out.println("Adding: " + ap);
+                    order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
+                    System.out.println(order);
+                }
+
+                public void mouseReleased(MouseEvent me) {}
+                public void mouseClicked(MouseEvent me) {}
+                public void mouseExited(MouseEvent me) {}
+                public void mouseEntered(MouseEvent me) {} 
+            });
+
             appTile.setAppetizer();
             appTileList.add(appTile);
             itemGridPanel.add(appTile);
@@ -147,6 +153,23 @@ public class NullDinerFrame extends JFrame {
         for (int i=0; i<menu.getSandArray().size(); i++) {
             MenuItem s = menu.getSandwich(i);
             ItemTile sandTile = new ItemTile(s);
+
+            sandTile.addMouseListener(new MouseListener() {
+                public void mousePressed(MouseEvent me) {
+                    order.getOrderList().add(s);
+                    System.out.println("Adding: " + s);
+                    order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
+                    System.out.println(order);
+                }
+
+                public void mouseReleased(MouseEvent me) {}
+                public void mouseClicked(MouseEvent me) {}
+                public void mouseExited(MouseEvent me) {}
+                public void mouseEntered(MouseEvent me) {} 
+            });
+
             sandTile.setSandwich();
             sandTileList.add(sandTile);
             itemGridPanel.add(sandTile);
@@ -156,6 +179,23 @@ public class NullDinerFrame extends JFrame {
         for (int i=0; i<menu.getBurgArray().size(); i++) {
             MenuItem b = menu.getBurger(i);
             ItemTile burgTile = new ItemTile(b);
+
+            burgTile.addMouseListener(new MouseListener() {
+                public void mousePressed(MouseEvent me) {
+                    order.getOrderList().add(b);
+                    System.out.println("Adding: " + b);
+                    order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
+                    System.out.println(order);
+                }
+
+                public void mouseReleased(MouseEvent me) {}
+                public void mouseClicked(MouseEvent me) {}
+                public void mouseExited(MouseEvent me) {}
+                public void mouseEntered(MouseEvent me) {} 
+            });
+
             burgTile.setBurger();
             burgTileList.add(burgTile);
             itemGridPanel.add(burgTile);
@@ -165,6 +205,23 @@ public class NullDinerFrame extends JFrame {
         for (int i=0; i<menu.getDrinkArray().size(); i++) {
             MenuItem dr = menu.getDrink(i);
             ItemTile drinkTile = new ItemTile(dr);
+
+            drinkTile.addMouseListener(new MouseListener() {
+                public void mousePressed(MouseEvent me) {
+                    order.getOrderList().add(dr);
+                    System.out.println("Adding: " + dr);
+                    order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
+                    System.out.println(order);
+                }
+
+                public void mouseReleased(MouseEvent me) {}
+                public void mouseClicked(MouseEvent me) {}
+                public void mouseExited(MouseEvent me) {}
+                public void mouseEntered(MouseEvent me) {} 
+            });
+
             drinkTile.setDrink();
             drinkTileList.add(drinkTile);
             itemGridPanel.add(drinkTile);
@@ -174,6 +231,23 @@ public class NullDinerFrame extends JFrame {
         for (int i=0; i<menu.getDessArray().size(); i++) {
             MenuItem ds = menu.getDessert(i);
             ItemTile dessTile = new ItemTile(ds);
+
+            dessTile.addMouseListener(new MouseListener() {
+                public void mousePressed(MouseEvent me) {
+                    order.getOrderList().add(ds);
+                    System.out.println("Adding: " + ds);
+                    order.calcTotal();
+                    order.calcTax();
+                    order.calcSubtotal();
+                    System.out.println(order);
+                }
+
+                public void mouseReleased(MouseEvent me) {}
+                public void mouseClicked(MouseEvent me) {}
+                public void mouseExited(MouseEvent me) {}
+                public void mouseEntered(MouseEvent me) {} 
+            });
+
             dessTile.setDessert();
             dessTileList.add(dessTile);
             itemGridPanel.add(dessTile);

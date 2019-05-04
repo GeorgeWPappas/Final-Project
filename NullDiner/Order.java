@@ -7,7 +7,6 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 
-
 public class Order {
     private String customerName;
     private ArrayList<MenuItem> orderList = new ArrayList<MenuItem>();
@@ -17,7 +16,6 @@ public class Order {
     private double subtotal;
     private Boolean checkedOut;
     private String saveFileName = "CustomerReceipt.txt";
-
 
     public Order(String nameIn) {
         this.customerName = nameIn;
@@ -37,7 +35,7 @@ public class Order {
     }
 
     public void calcTotal() {
-        total = 0; // reset the total
+        total = 0; // Resets the total
         for (MenuItem item : orderList) {
             total += item.getPrice();
         }
@@ -64,7 +62,7 @@ public class Order {
         return orderList;
     }
 
-    public String toString() { // receipt info
+    public String toString() { // Receipt info.
 
         String printOrder = "\n**************************\nName: " + customerName + "\n**************************\n";
         for (MenuItem item : orderList) {
