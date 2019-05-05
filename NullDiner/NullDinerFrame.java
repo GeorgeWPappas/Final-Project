@@ -103,6 +103,8 @@ public class NullDinerFrame extends JFrame {
     private NullDinerMenu menu;
 
     private NumberFormat nf = NumberFormat.getCurrencyInstance();
+    private JLabel priceField = new JLabel("Total: " + nf.format(order.getTotal()) + ", Tax: " + nf.format(order.getTax())
+       + ", Subtotal: " + nf.format(order.getSubtotal()));
 
     NullDinerFrame(Order orderIn, NullDinerMenu menuIn) {
         order = orderIn;    
@@ -116,6 +118,7 @@ public class NullDinerFrame extends JFrame {
 
         JPanel buttonPanel = new JPanel();
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
+        buttonPanel.add(priceField);
 
         // holds menu 
         JPanel itemGridPanel = new JPanel();
@@ -142,11 +145,6 @@ public class NullDinerFrame extends JFrame {
                 dispose();
             }
         });
-        
-        //displays total, tax, subtotal
-        JLabel priceField = new JLabel("Total: " + nf.format(order.getTotal()) + ", Tax: " + nf.format(order.getTax())
-            + ", Subtotal: " + nf.format(order.getSubtotal()));
-        buttonPanel.add(priceField);
 
         JPanel helpPanel = new JPanel();
         JLabel help1 = new JLabel("Click on an item in the menu on the left to add to your order.");
@@ -167,8 +165,8 @@ public class NullDinerFrame extends JFrame {
 
             appTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) { // adds to order
-                    addToOrder(order, orderPanel, ap, priceField);
-                    updatePriceField(priceField);
+                    addToOrder(order, orderPanel, ap);
+                    updatePriceField();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -188,8 +186,8 @@ public class NullDinerFrame extends JFrame {
 
             sandTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
-                    addToOrder(order, orderPanel, s, priceField);
-                    updatePriceField(priceField);
+                    addToOrder(order, orderPanel, s);
+                    updatePriceField();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -209,8 +207,8 @@ public class NullDinerFrame extends JFrame {
 
             burgTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
-                    addToOrder(order, orderPanel, b, priceField);
-                    updatePriceField(priceField);
+                    addToOrder(order, orderPanel, b);
+                    updatePriceField();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -230,8 +228,8 @@ public class NullDinerFrame extends JFrame {
 
             drinkTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
-                    addToOrder(order, orderPanel, dr, priceField);
-                    updatePriceField(priceField);
+                    addToOrder(order, orderPanel, dr);
+                    updatePriceField();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -251,8 +249,8 @@ public class NullDinerFrame extends JFrame {
 
             dessTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
-                    addToOrder(order, orderPanel, ds, priceField);
-                    updatePriceField(priceField);
+                    addToOrder(order, orderPanel, ds);
+                    updatePriceField();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -265,15 +263,15 @@ public class NullDinerFrame extends JFrame {
 
 
     // updates the total, tax, and subtotal info on the JLabel
-    public void updatePriceField(JLabel label) {
-        label.setText("Total: " + nf.format(order.getTotal()) + ", Tax: " + nf.format(order.getTax())
+    public void updatePriceField() {
+        priceField.setText("Total: " + nf.format(order.getTotal()) + ", Tax: " + nf.format(order.getTax())
             + ", Subtotal: " + nf.format(order.getSubtotal()));
         revalidate();
         repaint();
     }
 
     // adds an item to the order
-    public void addToOrder(Order orderIn, JPanel orderPanelIn, MenuItem mi, JLabel priceFieldIn) {
+    public void addToOrder(Order orderIn, JPanel orderPanelIn, MenuItem mi) {
         orderIn.addItem(mi);
         System.out.println("Adding: " + mi);
         orderIn.calcTotal();
@@ -286,7 +284,7 @@ public class NullDinerFrame extends JFrame {
         orderedTile.addMouseListener(new MouseListener() { // creates mouselistener that removes item from order when clicked
             public void mousePressed(MouseEvent me) { 
                 removeFromOrder(orderIn, orderPanelIn, mi, orderedTile);
-                updatePriceField(priceFieldIn);
+                updatePriceField();
             }
 
             public void mouseReleased(MouseEvent me) {}
