@@ -25,6 +25,4 @@ public class MenuItem {
     public String toString() {
         return menuIndex + " - " + itemName + ", " + nf.format(price) + "\n";
     }
-
-    // Todo: have item descriptions
 }

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.text.NumberFormat;
 
+// For printing Receipt.
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -103,5 +104,4 @@ public class Order {
         printWriter.close(); // Closes printWriter.
 
     }
-
 }
