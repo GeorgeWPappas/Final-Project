@@ -165,8 +165,8 @@ public class NullDinerFrame extends JFrame {
 
             appTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) { // adds to order
-                    addToOrder(order, orderPanel, ap);
-                    updatePriceField();
+                    addToOrder(order, orderPanel, ap, priceField);
+                    updatePriceField(priceField);
                 }
 
                 public void mouseReleased(MouseEvent me) {}
