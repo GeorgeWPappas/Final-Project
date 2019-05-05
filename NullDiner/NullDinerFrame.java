@@ -23,10 +23,6 @@ import javax.swing.JOptionPane;
 
 import java.util.ArrayList;
 
-// For playing sound.
-import java.io.*;
-import javax.sound.sampled.*;
-
 class ItemTile extends JPanel {
     private MenuItem item = null;
 
@@ -158,6 +154,8 @@ public class NullDinerFrame extends JFrame {
             + ", Subtotal: " + nf.format(order.getSubtotal()));
         buttonPanel.add(priceField);
 
+        SoundClip sound = new SoundClip(); // Creates a new instance of the SoundClip class.
+
         // Fills out the frame with menu items.
         appTileList = new ArrayList<ItemTile>();
         for (int i=0; i<menu.getAppArray().size(); i++) {
@@ -169,6 +167,7 @@ public class NullDinerFrame extends JFrame {
 
             appTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) { // Adds to order.
+                    sound.playSound(); // Plays sound.
                     addToOrder(order, orderPanel, ap, priceField);
                     updatePriceField(priceField);
                 }
@@ -190,6 +189,7 @@ public class NullDinerFrame extends JFrame {
 
             sandTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
+                    sound.playSound(); // Plays sound.
                     addToOrder(order, orderPanel, s, priceField);
                     updatePriceField(priceField);
                 }
@@ -211,6 +211,7 @@ public class NullDinerFrame extends JFrame {
 
             burgTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
+                    sound.playSound(); // Plays sound.
                     addToOrder(order, orderPanel, b, priceField);
                     updatePriceField(priceField);
                 }
@@ -232,6 +233,7 @@ public class NullDinerFrame extends JFrame {
 
             drinkTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
+                    sound.playSound(); // Plays sound.
                     addToOrder(order, orderPanel, dr, priceField);
                     updatePriceField(priceField);
                 }
@@ -253,6 +255,7 @@ public class NullDinerFrame extends JFrame {
 
             dessTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
+                    sound.playSound(); // Plays sound.
                     addToOrder(order, orderPanel, ds, priceField);
                     updatePriceField(priceField);
                 }
@@ -264,7 +267,6 @@ public class NullDinerFrame extends JFrame {
             });
         }
     }
-
 
     // Updates the total, tax, and subtotal info on the JLabel.
     public void updatePriceField(JLabel label) {
@@ -311,50 +313,5 @@ public class NullDinerFrame extends JFrame {
         orderIn.calcTax();
         orderIn.calcSubtotal();
         System.out.println(order);
-    }
-
-    public void playSound() {
-        System.out.println("test");
-
-
-        /*try {
-            AudioClip clip = Applet.newAudioClip(new sound("buttonSound.wav"));
-            clip.play();
-        } catch (MalformedURLException murle) {
-            System.out.print("Could not play sound");
-        }*/
-
-        /*try {
-            java.applet.AudioClip clip =
-            java.applet.Applet.newAudioClip(new java.net.URL(file://d:\cpsc-24500\cpsc-24500-final-project\NullDiner\buttonSound.wav));
-            clip.play();
-        } catch (java.net.MalformedURLException murle) {
-            System.out.println(murle);
-        }*/
-
-        /*try {
-            File yourFile = new File("buttonSound.wav");
-            AudioInputStream stream;
-            AudioFormat format;
-            DataLine.Info info;
-            Clip clip;
-        
-            stream = AudioSystem.getAudioInputStream(yourFile);
-            format = stream.getFormat();
-            info = new DataLine.Info(Clip.class, format);
-            clip = (Clip) AudioSystem.getLine(info);
-            clip.open(stream);
-            clip.start();
-        } catch (Exception e) {
-            System.out.print("Could not play sound");
-        }*/
-
-        /*try {
-            InputStream inputStream = getClass().getResourceAsStream(SOUND_FILENAME);
-            AudioStream audioStream = new AudioStream(inputStream);
-            AudioPlayer.player.start(audioStream);
-        } catch (FileNotFoundException e) {
-            System.out.print("Could not play sound");
-        }*/
     }
 }
