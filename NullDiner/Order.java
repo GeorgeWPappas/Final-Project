@@ -50,6 +50,18 @@ public class Order {
         subtotal = tax + total;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
+    public double getTax() {
+        return tax;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
     public Boolean getCheckoutStatus() {
         return checkedOut;
     }

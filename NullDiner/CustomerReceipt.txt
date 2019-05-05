@@ -1,0 +1,14 @@
+
+**************************
+Name: wes
+**************************
+A2 - Mozzarella Sticks, $2.99
+S2 - Ham Sandwich, $5.99
+S2 - Ham Sandwich, $5.99
+A2 - Mozzarella Sticks, $2.99
+**************************
+Total: $17.96
+Tax: $1.12
+Subtotal: $19.08
+**************************
+

@@ -1,6 +1,8 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
+import javax.swing.event.*; 
+import java.awt.*; 
+import javax.swing.*; 
+
+import java.text.NumberFormat;
 
 import java.awt.Container; 
 import java.awt.GridLayout;
@@ -39,6 +41,9 @@ class ItemTile extends JPanel {
     private Boolean isDessert = false;
     public void setDessert() { isDessert = true; }
 
+    private Boolean isOrderItem = false;
+    public void setOrderItem() {isOrderItem = true; }
+
     ItemTile() {
         super();
     }
@@ -62,6 +67,8 @@ class ItemTile extends JPanel {
             g.setColor(new Color(11,91,170)); // Stes Burger to Blue.
         } else if (isDrink) {
             g.setColor(new Color(255,255,0)); // Sets Drink to Yellow.
+        } else if (isOrderItem) {
+            g.setColor(new Color(187,244,234)); // sets order tiles to light blue
         } else if (isDessert) {
             g.setColor(new Color(0,204,0)); // Sets Dessert to Green.
         }
@@ -90,14 +97,18 @@ public class NullDinerFrame extends JFrame {
     private ArrayList<ItemTile> drinkTileList;
     private ArrayList<ItemTile> dessTileList;
 
+    private ArrayList<ItemTile> orderedTileList;
+
     private Order order;
     private NullDinerMenu menu;
+
+    private NumberFormat nf = NumberFormat.getCurrencyInstance();
 
     NullDinerFrame(Order orderIn, NullDinerMenu menuIn) {
         order = orderIn;    
         menu = menuIn;
 
-        setBounds(200,200,1200,800);
+        setBounds(100,100,1500,900);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Container contentPane = getContentPane();
@@ -106,10 +117,20 @@ public class NullDinerFrame extends JFrame {
         JPanel buttonPanel = new JPanel();
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
 
+        // holds menu 
         JPanel itemGridPanel = new JPanel();
-        contentPane.add(itemGridPanel, BorderLayout.CENTER);
         itemGridPanel.setLayout(new GridLayout(5,3));
+        
+        // holds ordered items
+        JPanel orderPanel = new JPanel();
+        orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
 
+        // split jframe into menu and order
+        JSplitPane splitPane = new JSplitPane(SwingConstants.VERTICAL, itemGridPanel, orderPanel);
+        splitPane.setDividerLocation(1000);
+        add(splitPane);
+
+        // checkouts and exits frame
         JButton checkoutButton = new JButton("Checkout");
         buttonPanel.add(checkoutButton);
         checkoutButton.addActionListener(new ActionListener() {
@@ -121,6 +142,19 @@ public class NullDinerFrame extends JFrame {
                 dispose();
             }
         });
+        
+        //displays total, tax, subtotal
+        JLabel priceField = new JLabel("Total: " + nf.format(order.getTotal()) + ", Tax: " + nf.format(order.getTax())
+            + ", Subtotal: " + nf.format(order.getSubtotal()));
+        buttonPanel.add(priceField);
+
+        JPanel helpPanel = new JPanel();
+        JLabel help1 = new JLabel("Click on an item in the menu on the left to add to your order.");
+        JLabel help2 = new JLabel("To remove an item from your order on the right, click on the item.");
+        helpPanel.add(help1);
+        helpPanel.add(help2);
+        contentPane.add(helpPanel, BorderLayout.NORTH);
+
 
         // Fills out the frame with menu items.
         appTileList = new ArrayList<ItemTile>();
@@ -129,13 +163,38 @@ public class NullDinerFrame extends JFrame {
             ItemTile appTile = new ItemTile(ap);
 
             appTile.addMouseListener(new MouseListener() {
-                public void mousePressed(MouseEvent me) {
+                public void mousePressed(MouseEvent me) { // adds appetizer to order
                     order.getOrderList().add(ap);
                     System.out.println("Adding: " + ap);
                     order.calcTotal();
                     order.calcTax();
                     order.calcSubtotal();
+                    updatePriceField(priceField);
                     System.out.println(order);
+
+                    ItemTile orderedAppTile = new ItemTile(ap);
+                    orderedAppTile.setOrderItem();
+                    orderedAppTile.addMouseListener(new MouseListener() {
+                        public void mousePressed(MouseEvent me) { // removes appetizer from order
+                            order.getOrderList().remove(ap);
+                            orderPanel.remove(orderedAppTile);
+                            order.calcTotal();
+                            order.calcTax();
+                            order.calcSubtotal();
+                            updatePriceField(priceField);
+                            System.out.println(ap + " removed from order.");
+                            System.out.println(order);
+                        }
+
+                        public void mouseReleased(MouseEvent me) {}
+                        public void mouseClicked(MouseEvent me) {}
+                        public void mouseExited(MouseEvent me) {}
+                        public void mouseEntered(MouseEvent me) {} 
+                    });
+
+                    orderPanel.add(orderedAppTile);
+                    orderPanel.revalidate();
+                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -161,7 +220,32 @@ public class NullDinerFrame extends JFrame {
                     order.calcTotal();
                     order.calcTax();
                     order.calcSubtotal();
+                    updatePriceField(priceField);
                     System.out.println(order);
+
+                    ItemTile orderedSandTile = new ItemTile(s);
+                    orderedSandTile.setOrderItem();
+                    orderedSandTile.addMouseListener(new MouseListener() {
+                        public void mousePressed(MouseEvent me) {
+                            order.getOrderList().remove(s);
+                            orderPanel.remove(orderedSandTile);
+                            order.calcTotal();
+                            order.calcTax();
+                            order.calcSubtotal();
+                            updatePriceField(priceField);
+                            System.out.println(s + " removed from order.");
+                            System.out.println(order);
+                        }
+
+                        public void mouseReleased(MouseEvent me) {}
+                        public void mouseClicked(MouseEvent me) {}
+                        public void mouseExited(MouseEvent me) {}
+                        public void mouseEntered(MouseEvent me) {} 
+                    });
+
+                    orderPanel.add(orderedSandTile);
+                    orderPanel.revalidate();
+                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -187,7 +271,32 @@ public class NullDinerFrame extends JFrame {
                     order.calcTotal();
                     order.calcTax();
                     order.calcSubtotal();
+                    updatePriceField(priceField);
                     System.out.println(order);
+
+                    ItemTile orderedBurgTile = new ItemTile(b);
+                    orderedBurgTile.setOrderItem();
+                    orderedBurgTile.addMouseListener(new MouseListener() {
+                        public void mousePressed(MouseEvent me) {
+                            order.getOrderList().remove(b);
+                            orderPanel.remove(orderedBurgTile);
+                            order.calcTotal();
+                            order.calcTax();
+                            order.calcSubtotal();
+                            updatePriceField(priceField);
+                            System.out.println(b + " removed from order.");
+                            System.out.println(order);
+                        }
+
+                        public void mouseReleased(MouseEvent me) {}
+                        public void mouseClicked(MouseEvent me) {}
+                        public void mouseExited(MouseEvent me) {}
+                        public void mouseEntered(MouseEvent me) {} 
+                    });
+
+                    orderPanel.add(orderedBurgTile);
+                    orderPanel.revalidate();
+                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -213,7 +322,32 @@ public class NullDinerFrame extends JFrame {
                     order.calcTotal();
                     order.calcTax();
                     order.calcSubtotal();
+                    updatePriceField(priceField);
                     System.out.println(order);
+
+                    ItemTile orderedDrinkTile = new ItemTile(dr);
+                    orderedDrinkTile.setOrderItem();
+                    orderedDrinkTile.addMouseListener(new MouseListener() {
+                        public void mousePressed(MouseEvent me) {
+                            order.getOrderList().remove(dr);
+                            orderPanel.remove(orderedDrinkTile);
+                            order.calcTotal();
+                            order.calcTax();
+                            order.calcSubtotal();
+                            updatePriceField(priceField);
+                            System.out.println(dr + " removed from order.");
+                            System.out.println(order);
+                        }
+
+                        public void mouseReleased(MouseEvent me) {}
+                        public void mouseClicked(MouseEvent me) {}
+                        public void mouseExited(MouseEvent me) {}
+                        public void mouseEntered(MouseEvent me) {} 
+                    });
+
+                    orderPanel.add(orderedDrinkTile);
+                    orderPanel.revalidate();
+                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -239,7 +373,32 @@ public class NullDinerFrame extends JFrame {
                     order.calcTotal();
                     order.calcTax();
                     order.calcSubtotal();
+                    updatePriceField(priceField);
                     System.out.println(order);
+
+                    ItemTile orderedDessTile = new ItemTile(ds);
+                    orderedDessTile.setOrderItem();
+                    orderedDessTile.addMouseListener(new MouseListener() {
+                        public void mousePressed(MouseEvent me) {
+                            order.getOrderList().remove(ds);
+                            orderPanel.remove(orderedDessTile);
+                            order.calcTotal();
+                            order.calcTax();
+                            order.calcSubtotal();
+                            updatePriceField(priceField);
+                            System.out.println(ds + " removed from order.");
+                            System.out.println(order);
+                        }
+
+                        public void mouseReleased(MouseEvent me) {}
+                        public void mouseClicked(MouseEvent me) {}
+                        public void mouseExited(MouseEvent me) {}
+                        public void mouseEntered(MouseEvent me) {} 
+                    });
+
+                    orderPanel.add(orderedDessTile);
+                    orderPanel.revalidate();
+                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -252,5 +411,14 @@ public class NullDinerFrame extends JFrame {
             dessTileList.add(dessTile);
             itemGridPanel.add(dessTile);
         }
+    }
+
+
+    // updates the total, tax, and subtotal info on the JLabel
+    public void updatePriceField(JLabel label) {
+        label.setText("Total: " + nf.format(order.getTotal()) + ", Tax: " + nf.format(order.getTax())
+            + ", Subtotal: " + nf.format(order.getSubtotal()));
+        revalidate();
+        repaint();
     }
 }

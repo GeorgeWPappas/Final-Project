@@ -14,6 +14,9 @@ public class NullDiner {
         NullDinerFrame myFrame = new NullDinerFrame(order, menu);
         myFrame.setVisible(true);
 
+        System.out.println("\nClick on an item in the menu on the left to add to your order.");
+        System.out.println("To remove an item from your order on the right, click on the item.\n");
+
         while (order.getCheckoutStatus() == false) {
             String keepGoing;
             keepGoing = sc.nextLine();
