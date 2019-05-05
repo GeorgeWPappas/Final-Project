@@ -1,14 +1,46 @@
 
 **************************
-Name: wes
+Name: george
 **************************
-A2 - Mozzarella Sticks, $2.99
 S2 - Ham Sandwich, $5.99
+B2 - Float Cheeseburger, $8.99
+Dr2 - Coffee, $1.99
+Dr1 - Null Shake, $1.99
+Ds1 - Strawberry Shortcake, $2.99
+Ds0 - Cherry Pie, $2.99
+Dr0 - Nullka Cola, $1.25
+Dr1 - Null Shake, $1.99
+Ds2 - Fudge Sundae, $3.99
+Dr2 - Coffee, $1.99
+B2 - Float Cheeseburger, $8.99
+S2 - Ham Sandwich, $5.99
+S1 - Tuna Sandwich, $6.99
+A2 - Mozzarella Sticks, $2.99
+A1 - Onion Rings, $2.99
+S1 - Tuna Sandwich, $6.99
+S0 - Null Reuben, $6.99
+A0 - Chicken Tenders, $2.99
+S0 - Null Reuben, $6.99
+B0 - Null Burger, $7.99
+Dr0 - Nullka Cola, $1.25
+Ds0 - Cherry Pie, $2.99
+Ds1 - Strawberry Shortcake, $2.99
+Ds2 - Fudge Sundae, $3.99
+Dr2 - Coffee, $1.99
+Dr1 - Null Shake, $1.99
+B1 - Double Cheeseburger, $8.99
+B0 - Null Burger, $7.99
+S0 - Null Reuben, $6.99
+S1 - Tuna Sandwich, $6.99
 S2 - Ham Sandwich, $5.99
 A2 - Mozzarella Sticks, $2.99
+A1 - Onion Rings, $2.99
+A0 - Chicken Tenders, $2.99
+S0 - Null Reuben, $6.99
+Dr1 - Null Shake, $1.99
 **************************
-Total: $17.96
-Tax: $1.12
-Subtotal: $19.08
+Total: $164.16
+Tax: $10.26
+Subtotal: $174.42
 **************************
 
