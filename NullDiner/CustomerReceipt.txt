@@ -1,14 +1,12 @@
 
 **************************
-Name: wes
+Name: wesley
 **************************
-A2 - Mozzarella Sticks, $2.99
-S2 - Ham Sandwich, $5.99
-S2 - Ham Sandwich, $5.99
-A2 - Mozzarella Sticks, $2.99
+Ds1 - Strawberry Shortcake, $2.99
+Dr1 - Null Shake, $1.99
 **************************
-Total: $17.96
-Tax: $1.12
-Subtotal: $19.08
+Total: $4.98
+Tax: $0.31
+Subtotal: $5.29
 **************************
 

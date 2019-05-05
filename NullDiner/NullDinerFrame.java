@@ -161,40 +161,14 @@ public class NullDinerFrame extends JFrame {
         for (int i=0; i<menu.getAppArray().size(); i++) {
             MenuItem ap = menu.getAppetizer(i);
             ItemTile appTile = new ItemTile(ap);
+            appTile.setAppetizer();
+            appTileList.add(appTile);
+            itemGridPanel.add(appTile);
 
             appTile.addMouseListener(new MouseListener() {
-                public void mousePressed(MouseEvent me) { // adds appetizer to order
-                    order.getOrderList().add(ap);
-                    System.out.println("Adding: " + ap);
-                    order.calcTotal();
-                    order.calcTax();
-                    order.calcSubtotal();
+                public void mousePressed(MouseEvent me) { // adds to order
+                    addToOrder(order, orderPanel, ap, priceField);
                     updatePriceField(priceField);
-                    System.out.println(order);
-
-                    ItemTile orderedAppTile = new ItemTile(ap);
-                    orderedAppTile.setOrderItem();
-                    orderedAppTile.addMouseListener(new MouseListener() {
-                        public void mousePressed(MouseEvent me) { // removes appetizer from order
-                            order.getOrderList().remove(ap);
-                            orderPanel.remove(orderedAppTile);
-                            order.calcTotal();
-                            order.calcTax();
-                            order.calcSubtotal();
-                            updatePriceField(priceField);
-                            System.out.println(ap + " removed from order.");
-                            System.out.println(order);
-                        }
-
-                        public void mouseReleased(MouseEvent me) {}
-                        public void mouseClicked(MouseEvent me) {}
-                        public void mouseExited(MouseEvent me) {}
-                        public void mouseEntered(MouseEvent me) {} 
-                    });
-
-                    orderPanel.add(orderedAppTile);
-                    orderPanel.revalidate();
-                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -202,50 +176,20 @@ public class NullDinerFrame extends JFrame {
                 public void mouseExited(MouseEvent me) {}
                 public void mouseEntered(MouseEvent me) {} 
             });
-
-            appTile.setAppetizer();
-            appTileList.add(appTile);
-            itemGridPanel.add(appTile);
         }
 
         sandTileList = new ArrayList<ItemTile>();
         for (int i=0; i<menu.getSandArray().size(); i++) {
             MenuItem s = menu.getSandwich(i);
             ItemTile sandTile = new ItemTile(s);
+            sandTile.setSandwich();
+            sandTileList.add(sandTile);
+            itemGridPanel.add(sandTile);
 
             sandTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
-                    order.getOrderList().add(s);
-                    System.out.println("Adding: " + s);
-                    order.calcTotal();
-                    order.calcTax();
-                    order.calcSubtotal();
+                    addToOrder(order, orderPanel, s, priceField);
                     updatePriceField(priceField);
-                    System.out.println(order);
-
-                    ItemTile orderedSandTile = new ItemTile(s);
-                    orderedSandTile.setOrderItem();
-                    orderedSandTile.addMouseListener(new MouseListener() {
-                        public void mousePressed(MouseEvent me) {
-                            order.getOrderList().remove(s);
-                            orderPanel.remove(orderedSandTile);
-                            order.calcTotal();
-                            order.calcTax();
-                            order.calcSubtotal();
-                            updatePriceField(priceField);
-                            System.out.println(s + " removed from order.");
-                            System.out.println(order);
-                        }
-
-                        public void mouseReleased(MouseEvent me) {}
-                        public void mouseClicked(MouseEvent me) {}
-                        public void mouseExited(MouseEvent me) {}
-                        public void mouseEntered(MouseEvent me) {} 
-                    });
-
-                    orderPanel.add(orderedSandTile);
-                    orderPanel.revalidate();
-                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -253,50 +197,20 @@ public class NullDinerFrame extends JFrame {
                 public void mouseExited(MouseEvent me) {}
                 public void mouseEntered(MouseEvent me) {} 
             });
-
-            sandTile.setSandwich();
-            sandTileList.add(sandTile);
-            itemGridPanel.add(sandTile);
         }
 
         burgTileList = new ArrayList<ItemTile>();
         for (int i=0; i<menu.getBurgArray().size(); i++) {
             MenuItem b = menu.getBurger(i);
             ItemTile burgTile = new ItemTile(b);
+            burgTile.setBurger();
+            burgTileList.add(burgTile);    
+            itemGridPanel.add(burgTile);
 
             burgTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
-                    order.getOrderList().add(b);
-                    System.out.println("Adding: " + b);
-                    order.calcTotal();
-                    order.calcTax();
-                    order.calcSubtotal();
+                    addToOrder(order, orderPanel, b, priceField);
                     updatePriceField(priceField);
-                    System.out.println(order);
-
-                    ItemTile orderedBurgTile = new ItemTile(b);
-                    orderedBurgTile.setOrderItem();
-                    orderedBurgTile.addMouseListener(new MouseListener() {
-                        public void mousePressed(MouseEvent me) {
-                            order.getOrderList().remove(b);
-                            orderPanel.remove(orderedBurgTile);
-                            order.calcTotal();
-                            order.calcTax();
-                            order.calcSubtotal();
-                            updatePriceField(priceField);
-                            System.out.println(b + " removed from order.");
-                            System.out.println(order);
-                        }
-
-                        public void mouseReleased(MouseEvent me) {}
-                        public void mouseClicked(MouseEvent me) {}
-                        public void mouseExited(MouseEvent me) {}
-                        public void mouseEntered(MouseEvent me) {} 
-                    });
-
-                    orderPanel.add(orderedBurgTile);
-                    orderPanel.revalidate();
-                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -304,50 +218,20 @@ public class NullDinerFrame extends JFrame {
                 public void mouseExited(MouseEvent me) {}
                 public void mouseEntered(MouseEvent me) {} 
             });
-
-            burgTile.setBurger();
-            burgTileList.add(burgTile);
-            itemGridPanel.add(burgTile);
         }
 
         drinkTileList = new ArrayList<ItemTile>();
         for (int i=0; i<menu.getDrinkArray().size(); i++) {
             MenuItem dr = menu.getDrink(i);
             ItemTile drinkTile = new ItemTile(dr);
+            drinkTile.setDrink();
+            drinkTileList.add(drinkTile);
+            itemGridPanel.add(drinkTile);
 
             drinkTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
-                    order.getOrderList().add(dr);
-                    System.out.println("Adding: " + dr);
-                    order.calcTotal();
-                    order.calcTax();
-                    order.calcSubtotal();
+                    addToOrder(order, orderPanel, dr, priceField);
                     updatePriceField(priceField);
-                    System.out.println(order);
-
-                    ItemTile orderedDrinkTile = new ItemTile(dr);
-                    orderedDrinkTile.setOrderItem();
-                    orderedDrinkTile.addMouseListener(new MouseListener() {
-                        public void mousePressed(MouseEvent me) {
-                            order.getOrderList().remove(dr);
-                            orderPanel.remove(orderedDrinkTile);
-                            order.calcTotal();
-                            order.calcTax();
-                            order.calcSubtotal();
-                            updatePriceField(priceField);
-                            System.out.println(dr + " removed from order.");
-                            System.out.println(order);
-                        }
-
-                        public void mouseReleased(MouseEvent me) {}
-                        public void mouseClicked(MouseEvent me) {}
-                        public void mouseExited(MouseEvent me) {}
-                        public void mouseEntered(MouseEvent me) {} 
-                    });
-
-                    orderPanel.add(orderedDrinkTile);
-                    orderPanel.revalidate();
-                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -355,50 +239,20 @@ public class NullDinerFrame extends JFrame {
                 public void mouseExited(MouseEvent me) {}
                 public void mouseEntered(MouseEvent me) {} 
             });
-
-            drinkTile.setDrink();
-            drinkTileList.add(drinkTile);
-            itemGridPanel.add(drinkTile);
         }
 
         dessTileList = new ArrayList<ItemTile>();
         for (int i=0; i<menu.getDessArray().size(); i++) {
             MenuItem ds = menu.getDessert(i);
             ItemTile dessTile = new ItemTile(ds);
+            dessTile.setDessert();
+            dessTileList.add(dessTile);
+            itemGridPanel.add(dessTile);
 
             dessTile.addMouseListener(new MouseListener() {
                 public void mousePressed(MouseEvent me) {
-                    order.getOrderList().add(ds);
-                    System.out.println("Adding: " + ds);
-                    order.calcTotal();
-                    order.calcTax();
-                    order.calcSubtotal();
+                    addToOrder(order, orderPanel, ds, priceField);
                     updatePriceField(priceField);
-                    System.out.println(order);
-
-                    ItemTile orderedDessTile = new ItemTile(ds);
-                    orderedDessTile.setOrderItem();
-                    orderedDessTile.addMouseListener(new MouseListener() {
-                        public void mousePressed(MouseEvent me) {
-                            order.getOrderList().remove(ds);
-                            orderPanel.remove(orderedDessTile);
-                            order.calcTotal();
-                            order.calcTax();
-                            order.calcSubtotal();
-                            updatePriceField(priceField);
-                            System.out.println(ds + " removed from order.");
-                            System.out.println(order);
-                        }
-
-                        public void mouseReleased(MouseEvent me) {}
-                        public void mouseClicked(MouseEvent me) {}
-                        public void mouseExited(MouseEvent me) {}
-                        public void mouseEntered(MouseEvent me) {} 
-                    });
-
-                    orderPanel.add(orderedDessTile);
-                    orderPanel.revalidate();
-                    orderPanel.repaint();
                 }
 
                 public void mouseReleased(MouseEvent me) {}
@@ -406,10 +260,6 @@ public class NullDinerFrame extends JFrame {
                 public void mouseExited(MouseEvent me) {}
                 public void mouseEntered(MouseEvent me) {} 
             });
-
-            dessTile.setDessert();
-            dessTileList.add(dessTile);
-            itemGridPanel.add(dessTile);
         }
     }
 
@@ -420,5 +270,44 @@ public class NullDinerFrame extends JFrame {
             + ", Subtotal: " + nf.format(order.getSubtotal()));
         revalidate();
         repaint();
+    }
+
+    // adds an item to the order
+    public void addToOrder(Order orderIn, JPanel orderPanelIn, MenuItem mi, JLabel priceFieldIn) {
+        orderIn.addItem(mi);
+        System.out.println("Adding: " + mi);
+        orderIn.calcTotal();
+        orderIn.calcTax();
+        orderIn.calcSubtotal();
+        System.out.println(order);
+
+        ItemTile orderedTile = new ItemTile(mi);
+        orderedTile.setOrderItem();
+        orderedTile.addMouseListener(new MouseListener() { // creates mouselistener that removes item from order when clicked
+            public void mousePressed(MouseEvent me) { 
+                removeFromOrder(orderIn, orderPanelIn, mi, orderedTile);
+                updatePriceField(priceFieldIn);
+            }
+
+            public void mouseReleased(MouseEvent me) {}
+            public void mouseClicked(MouseEvent me) {}
+            public void mouseExited(MouseEvent me) {}
+            public void mouseEntered(MouseEvent me) {} 
+            });
+
+        orderPanelIn.add(orderedTile);
+        orderPanelIn.revalidate();
+        orderPanelIn.repaint();
+    } 
+
+    // removes item from order
+    public void removeFromOrder(Order orderIn, JPanel orderPanelIn, MenuItem mi, ItemTile it) {
+        orderIn.removeItem(mi);
+        orderPanelIn.remove(it);
+        System.out.println(mi + " removed from order.");
+        orderIn.calcTotal();
+        orderIn.calcTax();
+        orderIn.calcSubtotal();
+        System.out.println(order);
     }
 }
